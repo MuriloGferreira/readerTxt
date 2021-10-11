@@ -1,6 +1,9 @@
 let input = document.querySelector('input');
 let textarea = document.querySelector('textarea');
 
+// const liwc = require('./liwc.js');
+// let a = liwc.fromText("anxious");
+
 input.addEventListener('change', () => {
     let files = input.files;
 
@@ -12,11 +15,10 @@ input.addEventListener('change', () => {
 
     reader.onload = (e) => {
         const file = e.target.result;
-        // const lines = file.split(/\r\n|\n/);
-        // textarea.value = lines.join('\n');
+        console.log(file)        
+        const lines = file.split(/,|\n|\.|^|/);
 
-        const lines = file.replace(/,\s*$/, "");
-        textarea.value = lines.join('\n');
+        textarea.value = lines.join('').toLowerCase().trim();
     };
 
     reader.onerror = (e) => alert(e.target.error.name);
