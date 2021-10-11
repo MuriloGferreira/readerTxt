@@ -12,7 +12,10 @@ input.addEventListener('change', () => {
 
     reader.onload = (e) => {
         const file = e.target.result;
-        const lines = file.split(/\r\n|\n/);
+        // const lines = file.split(/\r\n|\n/);
+        // textarea.value = lines.join('\n');
+
+        const lines = file.replace(/,\s*$/, "");
         textarea.value = lines.join('\n');
     };
 
